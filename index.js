@@ -1,5 +1,6 @@
 class library{
-    constructor(name,author,type){
+    constructor(rollNo ,name,author,type){
+        this.rollNo=rollNo
         this.name=name
         this.author=author
         this.type=type
@@ -10,6 +11,7 @@ class display{
         let tablebody=document.getElementById('tablebody')
         let html=`
                   <tr>
+                      <td>${book.rollNo}</td>
                       <td>${book.name}</td>
                       <td>${book.author}</td>
                       <td>${book.type}</td>
@@ -47,6 +49,7 @@ libraryform.reset()
 let libraryform=document.getElementById('libraryform')
 libraryform.addEventListener('submit',submitform)
 function submitform(e){
+    let rollNo=document.getElementById('rollNo').value
     let name=document.getElementById('bookName').value
     let author=document.getElementById('author').value
     let fiction=document.getElementById('fiction')
@@ -63,7 +66,7 @@ function submitform(e){
         type='programming'
     }
   
-    let book =new library(name,author,type)
+    let book =new library(rollNo, name,author,type)
     let disp=new display()
     if (disp.validate(book)){
         disp.add(book)
